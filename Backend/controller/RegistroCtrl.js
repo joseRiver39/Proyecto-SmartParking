@@ -3,6 +3,7 @@ const registroDAO = require("../model/RegistroDAO")
 
 const registroCtrl = {}
 
+
 registroCtrl.listar = async() => {
     let registros = await registroDAO.find();
     return registros;
@@ -13,9 +14,8 @@ registroCtrl.insertar = async(registro) => {
 };
 
 registroCtrl.actualizar = async(registro) => {
-    let id = registro._id;
-    delete registro._id;
-    return await registroDAO.findOneAndUpdate(id, registro);
+
+    return await registroDAO.findOneAndUpdate(registro._id, registro);
 };
 
 registroCtrl.eliminar = async(id) => {
